@@ -1,0 +1,328 @@
+WindowManager:
+    Main:
+    QuadraticEqn:
+    SimultaneousEqn:
+
+
+
+
+<Main>:
+    name:"main"
+    MDNavigationLayout:
+        MDScreenManager:
+            Screen:
+                BoxLayout:
+                    orientation : 'vertical'
+                    MDTopAppBar:
+                        icon: "calculator"
+                        title: "DESOLVER"
+                        left_action_items:
+                            [['menu', lambda x: nav_drawer.set_state("toggle")]]
+
+                    Widget:
+
+
+
+                    MDFloatLayout:
+                        MDLabel:
+                            text: 'select:'
+                            halign: 'center'
+                            pos_hint: {"x":0.02,"y":1.1}
+                        MDRoundFlatButton:
+                            text: '    QUADRATIC EQUATION   '
+                            pos_hint: {"x":0.20,"y":1.2}
+                            halign: 'center'
+                            on_release:
+                                app.root.current = "second"
+                                root.manager.transition.direction = 'left'
+                        MDRoundFlatButton:
+                            text: 'SIMULTANEOUS EQUATION'
+                            pos_hint: {"x":0.19,"y":0.7}
+                            halign: 'center'
+                            on_release:
+                                app.root.current = "third"
+                                root.manager.transition.direction = 'left'
+
+
+
+<QuadraticEqn>:
+    name:"second"
+    entry1:entry1
+    entry2:entry2
+    entry3:entry3
+    root1:root1
+    root2:root2
+    eqn: eqn
+    Screen:
+        BoxLayout:
+            orientation : 'vertical'
+            MDTopAppBar:
+                title: "QUADRATIC EQN"
+                left_action_items : [['home', lambda x: app.go_home()]]
+            MDFloatLayout:
+
+                MDTextField:
+                    id:entry1
+                    mode:"round"
+                    helper_text: "a"
+                    pos_hint: {"x":0.1,"y":0.3}
+                    size_hint: 0.15, 0.2
+                    font_size:18
+                    halign: 'center'
+
+                MDLabel:
+                    text: 'X²+'
+                    pos_hint: {"x":0.2,"y":0.3}
+                    size_hint: 0.3, 0.2
+                    font_size: 30
+                    halign: 'center'
+                MDTextField:
+                    id:entry2
+                    mode:"round"
+                    helper_text: "b"
+                    pos_hint: {"x":0.45,"y":0.3}
+                    size_hint: 0.15, 0.2
+                    font_size:18
+                    halign: 'center'
+
+                MDLabel:
+                    text: 'X+'
+                    pos_hint: {"x":0.54,"y":0.3}
+                    size_hint: 0.3, 0.2
+                    font_size: 30
+                    halign: 'center'
+                MDTextField:
+                    id:entry3
+                    mode:"round"
+                    helper_text: "c"
+                    pos_hint: {"x":0.8,"y":0.3}
+                    size_hint: 0.15, 0.2
+                    font_size:18
+                    halign: 'center'
+                MDLabel:
+                    text: 'input your values'
+                    pos_hint: {"x":0.13,"y":0.8}
+                    size_hint: 0.8,0.2
+                    font_size: 20
+                    halign: 'center'
+                MDLabel:
+                    text: 'ax²+bx+c=0'
+                    pos_hint: {"x":0.33,"y":0.6}
+                    size_hint: 0.4,0.2
+                    font_size: 20
+                    halign: 'center'
+                MDRoundFlatButton:
+                    text: 'SOLVE'
+                    pos_hint: {"x":0.33,"y":-0.8}
+                    size_hint: 0.4,0.2
+                    halign: 'center'
+                    on_press:
+                        root.eqn1()
+
+                MDLabel:
+                    text: 'The roots of'
+                    pos_hint: {"x":0.33,"y":0.03}
+                    size_hint: 0.4,0.2
+                    font_size: 20
+                    halign: 'center'
+                MDLabel:
+                    id: eqn
+                    text: ''
+                    pos_hint: {"x":0.33,"y":-0.15}
+                    size_hint: 0.4,0.2
+                    font_size: 18
+                    halign: 'center'
+                MDLabel:
+                    text: 'are:'
+                    pos_hint: {"x":0.33,"y":-0.3}
+                    size_hint: 0.4,0.2
+                    font_size: 20
+                    halign: 'center'
+                MDLabel:
+                    id:root1
+                    text: ''
+                    pos_hint: {"x":0.1,"y":-0.5}
+                    size_hint: 0.4,0.2
+                    font_size: 40
+                    halign: 'center'
+                MDLabel:
+                    text: 'and'
+                    pos_hint: {"x":0.33,"y":-0.5}
+                    size_hint: 0.4,0.2
+                    font_size: 20
+                    halign: 'center'
+                MDLabel:
+                    id:root2
+                    text: ''
+                    pos_hint: {"x":0.55,"y":-0.5}
+                    size_hint: 0.4,0.2
+                    font_size: 40
+                    halign: 'center'
+
+
+
+
+            Widget:
+
+<SimultaneousEqn>
+    name: 'third'
+    ent1: ent1
+    ent2: ent2
+    ent3: ent3
+    ent4: ent4
+    ent5: ent5
+    ent6: ent6
+    eq1: eq1
+    eq2: eq2
+    value1:value1
+    value2:value2
+    Screen:
+        BoxLayout:
+            orientation : 'vertical'
+            MDTopAppBar:
+                title: "SIMULTANEOUS EQN"
+                left_action_items : [['home', lambda x: app.go_home()]]
+            MDFloatLayout:
+                MDLabel:
+                    text: 'input your values'
+                    pos_hint: {"x":0.13,"y":0.8}
+                    size_hint: 0.8,0.2
+                    font_size: 20
+                    halign: 'center'
+                MDLabel:
+                    text: 'ax+by=c'
+                    pos_hint: {"x":0.33,"y":0.6}
+                    size_hint: 0.4,0.2
+                    font_size: 20
+                    halign: 'center'
+                MDLabel:
+                    text: 'dx+ey=f'
+                    pos_hint: {"x":0.33,"y":0.5}
+                    size_hint: 0.4,0.2
+                    font_size: 20
+                    halign: 'center'
+                MDTextField:
+                    id:ent1
+                    mode:"round"
+                    helper_text: "a"
+                    pos_hint: {"x":0.1,"y":0.3}
+                    size_hint: 0.15, 0.2
+                    font_size:18
+                    halign: 'center'
+
+                MDLabel:
+                    text: 'x+'
+                    pos_hint: {"x":0.2,"y":0.3}
+                    size_hint: 0.3, 0.2
+                    font_size: 30
+                    halign: 'center'
+
+                MDTextField:
+                    id:ent2
+                    mode:"round"
+                    helper_text: "b"
+                    pos_hint: {"x":0.45,"y":0.3}
+                    size_hint: 0.15, 0.2
+                    font_size:18
+                    halign: 'center'
+
+                MDLabel:
+                    text: 'y ='
+                    pos_hint: {"x":0.54,"y":0.3}
+                    size_hint: 0.3, 0.2
+                    font_size: 30
+                    halign: 'center'
+
+                MDTextField:
+                    id:ent3
+                    mode:"round"
+                    helper_text: "c"
+                    pos_hint: {"x":0.8,"y":0.3}
+                    size_hint: 0.15, 0.2
+                    font_size:18
+                    halign: 'center'
+                MDTextField:
+                    id:ent4
+                    mode:"round"
+                    helper_text: "d"
+                    pos_hint: {"x":0.1,"y":0.01}
+                    size_hint: 0.15, 0.2
+                    font_size:18
+                    halign: 'center'
+
+                MDLabel:
+                    text: 'x+'
+                    pos_hint: {"x":0.2,"y":0.01}
+                    size_hint: 0.3, 0.2
+                    font_size: 30
+                    halign: 'center'
+
+                MDTextField:
+                    id:ent5
+                    mode:"round"
+                    helper_text: "e"
+                    pos_hint: {"x":0.45,"y":0.01}
+                    size_hint: 0.15, 0.2
+                    font_size:18
+                    halign: 'center'
+
+                MDLabel:
+                    text: 'y ='
+                    pos_hint: {"x":0.54,"y":0.01}
+                    size_hint: 0.3, 0.2
+                    font_size: 30
+                    halign: 'center'
+
+                MDTextField:
+                    id:ent6
+                    mode:"round"
+                    helper_text: "f"
+                    pos_hint: {"x":0.8,"y":0.01}
+                    size_hint: 0.15, 0.2
+                    font_size:18
+
+                MDRoundFlatButton:
+                    text: 'SOLVE'
+                    pos_hint: {"x":0.33,"y":-0.8}
+                    size_hint: 0.4,0.2
+                    halign: 'center'
+                    on_press:
+                        root.eqn2()
+                MDLabel:
+                    id:eq1
+                    text: ''
+                    pos_hint: {"x":0.33,"y":-0.2}
+                    size_hint: 0.4,0.2
+                    font_size: 20
+                    halign: 'center'
+                MDLabel:
+                    id:eq2
+                    text: ''
+                    pos_hint: {"x":0.33,"y":-0.3}
+                    size_hint: 0.4,0.2
+                    font_size: 20
+                    halign: 'center'
+                MDLabel:
+                    id:value1
+                    text: ''
+                    pos_hint: {"x":0.1,"y":-0.5}
+                    size_hint: 0.4,0.2
+                    font_size: 30
+                    halign: 'center'
+                MDLabel:
+                    text: ' and '
+                    pos_hint: {"x":0.33,"y":-0.5}
+                    size_hint: 0.4,0.2
+                    font_size: 20
+                    halign: 'center'
+                MDLabel:
+                    id:value2
+                    text: ''
+                    pos_hint: {"x":0.55,"y":-0.5}
+                    size_hint: 0.4,0.2
+                    font_size: 30
+                    halign: 'center'
+
+            Widget:
+
+
